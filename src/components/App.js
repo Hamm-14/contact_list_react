@@ -35,6 +35,38 @@ class App extends React.Component {
     });
   };
 
+  handleUpdateContact = async (name, phone, id) => {
+    const { users } = this.state;
+    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+    await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        id,
+        phone,
+        name,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log("Data from updation of contact", json));
+
+    // let updatedUsers = [];
+
+    let updatedUsers = users.map((user) => {
+      if (user.id === id) {
+        user.name = name;
+        user.phone = phone;
+      }
+      return user;
+    });
+
+    this.setState({
+      users: updatedUsers,
+    });
+  };
+
   render() {
     const { users } = this.state;
     return (
@@ -58,6 +90,7 @@ class App extends React.Component {
                   key={user.id}
                   id={user.id}
                   handleDelete={this.handleDeleteContact}
+                  handleUpdate={this.handleUpdateContact}
                 />
               );
             })

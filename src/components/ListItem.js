@@ -5,6 +5,8 @@ class ListItem extends React.Component {
     super(props);
     this.state = {
       editMode: false,
+      editedName: "",
+      editedPhone: "",
     };
   }
 
@@ -13,18 +15,57 @@ class ListItem extends React.Component {
       editMode: true,
     });
   };
+
+  handleNameChange = (e) => {
+    // console.log(e.target.value);
+    this.setState({
+      editedName: e.target.value,
+    });
+  };
+
+  handlePhoneChange = (e) => {
+    // console.log(e.target.value);
+    this.setState({
+      editedPhone: e.target.value,
+    });
+  };
+
+  handleUpdateContact = async () => {
+    const { editedName, editedPhone } = this.state;
+    const { handleUpdate, id } = this.props;
+    if (editedName && editedPhone) {
+      await handleUpdate(editedName, editedPhone, id);
+      this.setState({
+        editMode: false,
+      });
+    }
+  };
+
   render() {
     const { name, contact, handleDelete, id } = this.props;
     const { editMode } = this.state;
     return (
       <li>
-        <p>{name}</p>
-        <p>{contact}</p>
+        <p>
+          {editMode ? (
+            <input placeholder="Name..." onChange={this.handleNameChange} />
+          ) : (
+            name
+          )}
+        </p>
+        <p>
+          {editMode ? (
+            <input placeholder="Phone..." onChange={this.handlePhoneChange} />
+          ) : (
+            contact
+          )}
+        </p>
         <p>
           {editMode ? (
             <img
               className="list-btn"
-              src="https://cdn-icons-png.flaticon.com/512/2681/2681062.png"
+              onClick={this.handleUpdateContact}
+              src="https://cdn-icons-png.flaticon.com/512/1688/1688988.png"
               alt="submit-edit"
             />
           ) : (
