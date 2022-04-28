@@ -1,5 +1,6 @@
 import React from "react";
 import ListItem from "./ListItem";
+import AddContacts from "./AddContacts";
 
 class App extends React.Component {
   constructor() {
@@ -71,31 +72,34 @@ class App extends React.Component {
     const { users } = this.state;
     return (
       <div className="App">
-        <header>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/1250/1250592.png"
-            alt="contact-icon"
-          ></img>
-          <h1>My Contacts List</h1>
-        </header>
-        <ul>
-          {users.length === 0 ? (
-            <h1>Loading....</h1>
-          ) : (
-            users.map((user) => {
-              return (
-                <ListItem
-                  name={user.name}
-                  contact={user.phone}
-                  key={user.id}
-                  id={user.id}
-                  handleDelete={this.handleDeleteContact}
-                  handleUpdate={this.handleUpdateContact}
-                />
-              );
-            })
-          )}
-        </ul>
+        <AddContacts />
+        <div id="contact-list-container">
+          <header>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/1250/1250592.png"
+              alt="contact-icon"
+            ></img>
+            <h1>My Contacts List</h1>
+          </header>
+          <ul>
+            {users.length === 0 ? (
+              <h1>Loading....</h1>
+            ) : (
+              users.map((user) => {
+                return (
+                  <ListItem
+                    name={user.name}
+                    contact={user.phone}
+                    key={user.id}
+                    id={user.id}
+                    handleDelete={this.handleDeleteContact}
+                    handleUpdate={this.handleUpdateContact}
+                  />
+                );
+              })
+            )}
+          </ul>
+        </div>
       </div>
     );
   }

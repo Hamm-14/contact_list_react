@@ -46,21 +46,21 @@ class ListItem extends React.Component {
     const { editMode } = this.state;
     return (
       <li>
-        <p>
+        <p className="name-container">
           {editMode ? (
             <input placeholder="Name..." onChange={this.handleNameChange} />
           ) : (
             name
           )}
         </p>
-        <p>
+        <p className="phone-container">
           {editMode ? (
             <input placeholder="Phone..." onChange={this.handlePhoneChange} />
           ) : (
             contact
           )}
         </p>
-        <p>
+        <p className="btns-container">
           {editMode ? (
             <img
               className="list-btn"

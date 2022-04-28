@@ -16,8 +16,27 @@ body {
   text-align: center;
 }
 
+.App {
+  display: flex;
+  flex-direction: row;
+  padding-left: 3%;
+  background: black;
+}
+
+#contact-list-container {
+  width: 60vw;
+}
+
+#add-contacts-container {
+  width: 40vw;
+  position: fixed;
+  top: 30%;
+  left: 60%;
+}
+
 header {
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 img {
@@ -32,7 +51,7 @@ img:hover {
 
 ul {
   list-style-type: none;
-  width: 40vw;
+  width: 90%;
   margin: auto;
 }
 
@@ -45,13 +64,13 @@ p {
 }
 
 h1 {
-  color: grey;
+  color: white;
   font-weight: 900;
   font-size: 3rem;
   font-family: sans-serif;
   letter-spacing: 1px;
   display: inline;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 li {
@@ -73,8 +92,13 @@ li:hover {
 }
 
 form {
-  width: 30vw;
-  margin: 10px 0px 0px 550px;
+  width: 90%;
+  margin-left: 30px;
+  text-align: center;
+}
+
+input {
+  margin-left: 10px;
 }
 
 button {
@@ -88,4 +112,14 @@ button {
 .list-btn {
   height: 25px;
   width: 25px;
+}
+
+.name-container,
+.phone-container {
+  width: 40%;
+  text-align: center;
+}
+
+.btns-container {
+  width: 20%;
 }
