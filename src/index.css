@@ -23,12 +23,16 @@ header {
 img {
   width: 50px;
   height: 40px;
-  margin: 26px 20px 0 0;
+  margin: 5px 20px 0 0;
+}
+
+img:hover {
+  cursor: pointer;
 }
 
 ul {
   list-style-type: none;
-  width: 30vw;
+  width: 40vw;
   margin: auto;
 }
 
