@@ -1,20 +1,59 @@
 import React, { Component } from "react";
 
 class AddContacts extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      phone: "",
+    };
+  }
+
+  handleChange = (inputType, e) => {
+    if (inputType === "name") {
+      this.setState({
+        name: e.target.value,
+      });
+      return;
+    }
+    this.setState({
+      phone: e.target.value,
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, phone } = this.state;
+    const { addContact } = this.props;
+    if (name && phone) {
+      addContact(name, phone);
+      this.setState({
+        name: "",
+        phone: "",
+      });
+    }
+  };
+
   render() {
+    const { name, phone } = this.state;
     return (
       <div id="add-contacts-container">
         <h1>Add Contact</h1>
-        <form action="/create-contact" method="post">
-          <input type="text" name="name" placeholder="Enter Name" required />
+        <form>
           <input
-            type="number"
-            name="phone"
-            placeholder="Enter Phone"
+            placeholder="Enter Name"
+            value={name}
             required
+            onChange={(e) => this.handleChange("name", e)}
+          />
+          <input
+            placeholder="Enter Phone"
+            value={phone}
+            required
+            onChange={(e) => this.handleChange("phone", e)}
           />
           <br />
-          <button type="submit">Add Contacts</button>
+          <button onClick={this.handleSubmit}>Add Contact</button>
         </form>
       </div>
     );

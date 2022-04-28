@@ -68,11 +68,35 @@ class App extends React.Component {
     });
   };
 
+  handleAddContact = async (name, phone) => {
+    let id = Date.now(); //genarting a unique id using date
+    const { users } = this.state;
+    const url = "https://jsonplaceholder.typicode.com/users";
+    await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        phone,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log("ADD CONTACT", json));
+
+    let updatedUsers = [{ name, phone, id }].concat(users);
+
+    this.setState({
+      users: updatedUsers,
+    });
+  };
+
   render() {
     const { users } = this.state;
     return (
       <div className="App">
-        <AddContacts />
+        <AddContacts addContact={this.handleAddContact} />
         <div id="contact-list-container">
           <header>
             <img

@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background: black;
 }
 
 code {
@@ -12,15 +14,10 @@ code {
     monospace;
 }
 
-body {
-  text-align: center;
-}
-
 .App {
   display: flex;
   flex-direction: row;
   padding-left: 3%;
-  background: black;
 }
 
 #contact-list-container {
@@ -32,6 +29,7 @@ body {
   position: fixed;
   top: 30%;
   left: 60%;
+  text-align: center;
 }
 
 header {
@@ -70,7 +68,7 @@ h1 {
   font-family: sans-serif;
   letter-spacing: 1px;
   display: inline;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 li {
